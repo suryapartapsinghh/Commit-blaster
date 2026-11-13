@@ -1,0 +1,31 @@
+# Copy this file to .github/workflows/commit-blaster.yml in your
+# profile repository (the repo named after your username).
+name: commit-blaster
+
+on:
+  schedule:
+    - cron: '0 0 * * *'   # every day at midnight UTC
+  workflow_dispatch:       # lets you run it manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Surya6032/commit-blaster@v1
+        with:
+          username: ${{ github.repository_owner }}
+
+      - name: Publish SVGs to the output branch
+        run: |
+          cd dist
+          git init -q
+          git checkout -q -b output
+          git add .
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -q -m "Update commit-blaster animation"
+          git push -q --force \
+            "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" output

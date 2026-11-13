@@ -1,0 +1,29 @@
+name: 'Commit Blaster'
+description: 'Turn your GitHub contribution graph into an animated retro space shooter SVG'
+author: 'Surya6032'
+branding:
+  icon: 'crosshair'
+  color: 'green'
+inputs:
+  username:
+    description: 'GitHub username whose contributions become targets'
+    required: true
+  github_token:
+    description: 'Token used to read the contribution calendar'
+    required: false
+    default: ${{ github.token }}
+  output_dir:
+    description: 'Directory to write the SVGs into'
+    required: false
+    default: 'dist'
+  style:
+    description: 'aliens or squares'
+    required: false
+    default: 'aliens'
+  speed:
+    description: 'Animation speed multiplier (0.25 to 4)'
+    required: false
+    default: '1'
+runs:
+  using: 'node24'
+  main: 'src/action.js'

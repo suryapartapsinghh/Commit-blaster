@@ -1,0 +1,14 @@
+{
+  "name": "commit-blaster",
+  "version": "1.0.0",
+  "description": "Turn your GitHub contribution graph into an animated retro space shooter SVG",
+  "main": "src/render.js",
+  "bin": { "commit-blaster": "cli.js" },
+  "scripts": {
+    "demo": "node cli.js --demo --out examples",
+    "test": "node --test"
+  },
+  "keywords": ["github", "contributions", "profile-readme", "svg", "animation", "github-action", "retro", "game"],
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}
