@@ -29,7 +29,7 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - uses: username/commit-blaster@v1
+      - uses: username/commit-blaster@v1.0.0
         with:
           username: ${{ username }}
 
